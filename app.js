@@ -2,14 +2,14 @@
 
 
 let radomize_array = document.getElementById("random_array");
-// let numOfBars = document.getElementById("BarsCount");
+// let numOfBars = document.getElementById("sizeOfArray").value;
 let sort_btn = document.getElementById("sort_btn");
 let minRange = 1;
 let maxRange = 50;
-let defaultNum = 100;
+let defaultNum = 75;
 let swapcom = 0;
 let Hfactor = 10;
-let delay = 20;
+let delay = 15;
 let bars_container = document.getElementById ("bars_container");
 let unsorted_Array = new Array (defaultNum);
 let sort_menu = document.getElementById("sMenu");
@@ -29,11 +29,14 @@ function createArray() {
     }
 }
 
+//load array, draw bars
+
 document.addEventListener("DOMContentLoaded", function() {
   createArray();
   renderBars(unsorted_Array);
 });
 
+//draw function
 
 function renderBars (array) {
   for ( let i = 0; i < array.length; i++){
@@ -45,24 +48,32 @@ function renderBars (array) {
 
 radomize_array.addEventListener("click", function(){
   createArray();
+  
   bars_container.innerHTML ="";
   renderBars(unsorted_Array);
 });
+
+//drop select menu
 
 function SortAlgo (sort_menu) {
     if (sort_menu.value == "1") {
       let sorted_array = bubblesort(unsorted_Array);
       console.log(sorted_array);
       } else if (sort_menu.value == "2") {
-        alert("work in progess")
+        let sorted_array_2 = quicksort(unsorted_Array, 0, unsorted_Array.length -1);
+        console.log(sorted_array_2);
       } else if (sort_menu.value == "3") {
-        alert("work in progress")
+        alert("work in progress");
       }
 }
+
+//delay for visualization
 
 function sleep(ms){
   return new Promise((resolve) => setTimeout(resolve, ms));  
 }
+
+// BubbleSort
 
 async function bubblesort(array) {
   let bars = document.getElementsByClassName("bar");
@@ -88,5 +99,36 @@ async function bubblesort(array) {
     await sleep(delay);
   }
   return array, swapcom;
+}
+
+// QuickSort
+
+function quicksort(array, low, high) {
+  if(high >= low) {
+    return;
+  }
+  let pi = partition(array, low, high);
+  quicksort(array, low, pi - 1);
+  quicksort(array, pi + 1, high);
+}
+
+function partition(array, low, high) {
+  let pivotVal = array[high];
+  let pivotIndex = low;
+
+  for (let j = low ; j < high ; j++){
+    if (array[j] < pivotVal){
+      swap(array, j, pivotIndex);
+      pivotIndex++;
+    }
+  }
+  swap(array, pivotIndex, high);
+  return pivotIndex;
+}
+
+function swap(array, i, j){
+  let temp = array[i];
+  array[i] = array[j];
+  array[j] = temp;
 }
 
