@@ -1,4 +1,4 @@
-<!-- every out commented code is for the features which I will we working on next -->
+<!-- every out commented code is for the features which I will be working on next -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,33 +8,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sort_Visual</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
+    <script  src="Main.js" defer></script>
 </head>
 <body>
     <div class="navbar">
         <div class="navbar_items">
+           
             <select class="select" id="sMenu" onchange="SortAlgo(this)">
-                <option disabled selected>Sorting Algorithm</option>
+                <option value="0" disabled selected>Sorting Algorithm</option>
                 <option value="1">Bubble Sort</option>
                 <option value="2">Quick Sort</option>
                 <option value="3">3rd Sort</option>
             </select>
-            <div class="arraySize" id="BarsCount">
-                <!-- <label for="sizeOfArray">Number of swaps </label> -->
-                <!-- <input type="number" id="sizeOfArray" value="20" >  -->
-                <!-- <input type="range" min="1" max="100" value="50" class="slider" id="range">
-                <span id="value"></span>
-                <span id="outputVar"></span> -->
-            </div> 
-
+            <div class="counter">
+                <p id="swap_counter" class="counter_swap"></p>
+                <p>Swap Counter</p>
+            </div>
             <button class="R_btn" id = "random_array"> Randomize Array</button>
+            <!-- <div class="arraySize" id="BarsCount">
+                <label for="sizeOfArray">Number of swaps </label>
+                 <input type="number" id="sizeOfArray" value="20" > 
+                 <input type="range" min="1" max="100" value="50" class="slider" id="range">
+                <span id="value"></span>
+                <span id="outputVar"></span>
+            </div>  -->
+            <!-- <div class="slider">
+                <input type="range" min="0" max="100" value="50">
+            </div>  -->
+            
+
         </div>
     </div>
     <div class="container">
         <div class="bars_container" id="bars_container">
-            <!-- <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div> -->
         </div>
     </div>
 </body>
